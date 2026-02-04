@@ -12,9 +12,12 @@ def fetch_animal_data(animal_name):
       print(f"Fehler: {response.status_code}")
       return []
 
-# Milestone 1: "Fox"
-animals_data = fetch_animal_data("Fox")
+# Milestone 2"
+animal_name = input("Enter a name of an animal: ")
+animals_data = fetch_animal_data(animal_name)
+#user_animal_search = fetch_animal_data(input("Which animal are you looking for? "))
 
+output = ""
 
 for animal in animals_data:
     output += '<li class="cards__item">'
@@ -36,11 +39,11 @@ for animal in animals_data:
     if "characteristics" in animal and "type" in animal["characteristics"]:
         output += f"<strong>Type:</strong> {animal['characteristics']['type']}<br/>\n"
 
+    output += '  </p>\n'
     output += '</li>\n'
 
 
 
-print(output)
 
 with open("animals_template.html", "r", encoding="utf-8") as f:
     template_content = f.read()
@@ -49,3 +52,5 @@ new_html_content = template_content.replace("__REPLACE_ANIMALS_INFO__", output)
 
 with open("animals.html", "w", encoding="utf-8") as f:
     f.write(new_html_content)
+
+print(f"Website was successfully generated to the file animals.html for: {animal_name}")
