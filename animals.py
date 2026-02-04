@@ -19,6 +19,11 @@ animals_data = fetch_animal_data(animal_name)
 
 output = ""
 
+# (Milestone 3)
+if not animals_data:
+    # Falls die Liste leer ist, wird diese Meldung in das HTML geschrieben
+    output = f"<h2>The animal '{animal_name}' doesn't exist.</h2>"
+
 for animal in animals_data:
     output += '<li class="cards__item">'
     # Name prüfen und ausgeben
